@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<h1>Ordenando Valores</h1>
+<div>
+    <label for="valor">Valor</label>
+    <input class="radius" id="valor" type="text"/>
+    <button class="btn btn-blue radius" onclick="add()">Adicionar</button>
+</div>
+
+<div>
+    <select class="radius" id="metodos" >
+        <option selected>Blubble Sort</option>
+        <option>Selection Sort</option>
+        <option>Quick Sort</option>
+    </select>
+
+    <button class="btn btn-blue radius" onclick="ordenar()">Ordenar</button>
+    <button class="btn btn-blue radius" onclick="misturar()">Misturar</button>
+</div>
+
+<ul id="valores"></ul>
+
+
+<script>
+    function add() {
+        entrada = document.getElementById('valor');
+        if(entrada.value) {
+            lista = document.getElementById('valores');
+            var node = document.createElement('li');
+            node.innerHTML = entrada.value;
+            lista.appendChild(node);
+
+            // fiz algumas mudanças para melhorar
+            entrada.value = '';
+            entrada.focus();
+        }
+    }
+
+    function ordenar() {
+        ul = document.getElementById('valores');
+        metodo = document.getElementById('metodos');
+
+        itemli = ul.children;
+
+        //array de itens que vai forma a lista do li
+        itens = [];
+
+        for (let i = 0; i < itemli.length; i++) {
+            //pego o valor da li
+            const liValue = eval(itemli[i].textContent);
+            itens.push(liValue)
+        }
+
+        // Seleciona a funcao e a executa
+        var itensmixed = [];
+        switch (metodo.value) {
+            case 'Blubble Sort':
+                itensmixed = (bubbleSort(itens))
+                break;
+            case 'Selection Sort':
+                itensmixed = (selectionSort(itens))
+                break
+            case 'Quick Sort':
+                itensmixed = (quickSort(itens, 0, itens.length - 1))
+                break
+        }
+
+        const newlista = [];
+
+        //criando nova lista de ordenada
+        const createli = itensmixed.map((texto) => {
+            const li = document.createElement('li');
+            li.textContent = texto;
+            return li;
+        })
+
+        //adiciona nova lista a ul
+        ul.innerHTML = ''
+        const lista = createli.reduce((reducelista, valor) => {
+            reducelista.appendChild(valor);
+            return reducelista
+        }, ul)
+
+    }
+
+    function misturar() {
+        ul = document.getElementById('valores');
+        metodo = document.getElementById('metodos');
+
+        itemli = ul.children;
+
+        //array de itens que vai forma a lista do li
+        itens = [];
+
+        for (let i = 0; i < itemli.length; i++) {
+            //pego o valor da li
+            const liValue = eval(itemli[i].textContent);
+            itens.push(liValue)
+        }
+
+        // Executa a funçao s
+        var itensmixed = (shuffle(itens, 10))
+
+
+        const newlista = [];
+        //criando nova lista de ordenada
+        const createli = itensmixed.map((texto) => {
+            const li = document.createElement('li');
+            li.textContent = texto;
+            return li;
+        })
+
+        //adiciona nova lista a ul
+        ul.innerHTML = ''
+        const lista = createli.reduce((reducelista, valor) => {
+            reducelista.appendChild(valor);
+            return reducelista
+        }, ul)
+    }
+</script>
+
+<script src="ordenando.js"></script>
+</body>
+</html>
