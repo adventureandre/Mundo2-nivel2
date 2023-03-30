@@ -11,11 +11,17 @@ Veja aqui. **[clicando aqui](exemplosjs/ordernando.html)**.
 - Página de Receitas Dinâmica
 - Utilizando JavaScript e Json
 
+Veja aqui. **[clicando aqui](Página-de-Receitas-Dinâmica/receitas.html)**.
+
+
 ## Pasta Transmissao-de-dados-Vuejs
 
 - Transmissão de Dados e VUE JS
 - Utilizando Vuejs, JavaScript e Json 
 - Acesse endereço via REST
+
+Veja aqui. **[clicando aqui](Transmissao-de-dados-Vuejs/usuarios.html)**.
+
 
 ## Credits
 
